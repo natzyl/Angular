@@ -1,0 +1,27 @@
+<div class="main">
+    <div class="header">
+      <h3>CURRENT WEATHER</h3>
+      <div class="date">{{ currentTimezone.dt * 1000 | date: "dd.MM.yyyy" }}</div>
+    </div>
+
+    <div class="weather-container">
+
+      <div class="icon-container">
+        <img [src]="getIcon(currentTimezone.weather[0].icon)" alt="weather-icon" />
+        <p>{{ currentTimezone.weather[0].main }}</p>
+      </div>
+
+      <div class="temperature-container">
+        <p>{{ currentTimezone.main.temp | number: "1.0-0" }}&#176;C</p>
+        <span>Real feel {{ currentTimezone.main.feels_like | number: "1.0-0" }}&#176;C</span>
+      </div>
+
+      <div class="weather-sun">
+        <p>Sunrise: {{ currentTimezone.sys.sunrise * 1000 | date: "HH:mm" }}</p>
+        <p>Sunset: {{ currentTimezone.sys.sunset * 1000 | date: "HH:mm" }}</p>
+        <p>
+          Duration:{{(currentTimezone.sys.sunset - currentTimezone.sys.sunrise) * 1000 | date: "HH:mm"}}
+        </p>
+      </div>
+    </div>
+</div>
